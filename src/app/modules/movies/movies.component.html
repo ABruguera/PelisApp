@@ -1,1 +1,5 @@
-<p>movies works!</p>
+<div class="container">
+    <div *ngFor="let movie of moviesList$ | async; trackBy: trackBy">
+        <span>{{ movie.title }}</span>
+    </div>
+</div>

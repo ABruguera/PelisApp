@@ -1,18 +1,19 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { ID } from "@datorama/akita";
-import { tap } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
+import { HttpService } from "src/app/services/http.service";
 import { Movie } from "./movie.model";
 import { MoviesStore } from "./movies.store";
 
 @Injectable({ providedIn: "root" })
 export class MoviesService {
-  constructor(private moviesStore: MoviesStore, private http: HttpClient) {}
+  constructor(private moviesStore: MoviesStore, private httpService: HttpService) {}
 
-  get() {
-    return this.http.get<Movie[]>("https://api.com").pipe(
-      tap((entities) => {
-        this.moviesStore.set(entities);
+  getAllMovies() {
+    return this.httpService.get("/movies").pipe(
+      map((res: any) => res as Movie[]),
+      tap((movies: Movie[]) => {
+        console.log(movies);
+        this.moviesStore.set(movies);
       })
     );
   }
@@ -21,11 +22,11 @@ export class MoviesService {
     this.moviesStore.add(movie);
   }
 
-  update(id, movie: Partial<Movie>) {
+  update(id: number, movie: Partial<Movie>) {
     this.moviesStore.update(id, movie);
   }
 
-  remove(id: ID) {
+  remove(id: number) {
     this.moviesStore.remove(id);
   }
 }

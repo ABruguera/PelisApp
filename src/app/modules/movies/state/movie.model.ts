@@ -1,5 +1,12 @@
 export interface Movie {
-  id: number | string;
+  id: number;
+  title: string;
+  poster: string;
+  genre: string[];
+  year: number;
+  duration: number;
+  imdbRating: number;
+  actors: number[];
 }
 
 export function createMovie(params: Partial<Movie>) {
