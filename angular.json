@@ -151,6 +151,6 @@
   },
   "defaultProject": "PelisApp",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "defaultCollection": "@datorama/akita"
   }
 }
