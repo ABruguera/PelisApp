@@ -9,9 +9,10 @@ import { AkitaNgDevtools } from "@datorama/akita-ngdevtools";
 import { environment } from "../environments/environment";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatsharedModule } from "./shared/matshared/matshared.module";
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
