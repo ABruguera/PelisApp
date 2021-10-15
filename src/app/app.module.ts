@@ -3,13 +3,19 @@ import { BrowserModule } from "@angular/platform-browser";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { ConfigService } from "./services/config.service";
 import { AkitaNgDevtools } from "@datorama/akita-ngdevtools";
 import { environment } from "../environments/environment";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatsharedModule } from "./shared/matshared/matshared.module";
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from "./components/header/header.component";
+import { SharedModule } from "./shared/shared/shared.module";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -19,7 +25,15 @@ import { HeaderComponent } from './components/header/header.component';
     HttpClientModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     BrowserAnimationsModule,
-    MatsharedModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      defaultLanguage: "es",
+    }),
+    SharedModule,
   ],
   providers: [
     {
