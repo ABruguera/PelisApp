@@ -1,5 +1,3 @@
-<div class="container">
-    <div *ngFor="let movie of moviesList$ | async; trackBy: trackBy">
-        <span>{{ movie.title }}</span>
-    </div>
+<div class="movies-list">
+  <app-movie-card *ngFor="let movie of moviesList$ | async; trackBy: trackBy" [data]="movie"></app-movie-card>
 </div>
