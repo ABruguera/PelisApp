@@ -1,0 +1,7 @@
+<div class="movie-card">
+  <span class="title">{{ data.title }}</span>
+  <img [src]="data.poster ? data.poster : '/assets/img/no-image.png'" />
+  <div *ngIf="data.genre && data.genre.length > 0" class="generos">
+    <span class="genero" *ngFor="let genre of data.genre"> #{{ genre }} </span>
+  </div>
+</div>
