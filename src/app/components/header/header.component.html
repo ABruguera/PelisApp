@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <div class="menu-items">
+    <button mat-button [routerLink]="['/movies']" [ngClass]="{ active: currentPage === '/movies' }">
+      {{ "menu.peliculas" | translate }}
+    </button>
+    <button mat-button [routerLink]="['/actors']" [ngClass]="{ active: currentPage === '/actors' }">
+      {{ "menu.actores" | translate }}
+    </button>
+    <button mat-button [routerLink]="['/studios']" [ngClass]="{ active: currentPage === '/studios' }">
+      {{ "menu.estudios" | translate }}
+    </button>
+  </div>
+</mat-toolbar>

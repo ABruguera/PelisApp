@@ -1,0 +1,12 @@
+.menu-items {
+  margin-left: auto;
+  margin-right: auto;
+
+  button + button {
+    margin-left: 32px;
+  }
+
+  .active {
+    color: red;
+  }
+}
