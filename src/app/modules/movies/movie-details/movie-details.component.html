@@ -1,0 +1,11 @@
+<div *ngIf="movie$ | async" class="movie">
+  <img [src]="(movie$ | async)?.poster ? (movie$ | async)?.poster : '/assets/img/no-image.png'" />
+  <div class="info">
+    <span><b>Título:</b> {{ (movie$ | async)?.title }}</span>
+    <span><b>Puntuación:</b> {{ (movie$ | async)?.imdbRating }}</span>
+    <span><b>Géneros:</b> {{ (movie$ | async)?.genre?.join(", ") }}</span>
+    <span><b>Año:</b> {{ (movie$ | async)?.year }}</span>
+    <span><b>Duración:</b> {{ (movie$ | async)?.duration }}</span>
+    <span><b>Actores:</b> {{ (movie$ | async)?.actors }}</span>
+  </div>
+</div>

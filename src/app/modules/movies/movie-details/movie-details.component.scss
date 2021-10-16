@@ -1,0 +1,11 @@
+.movie {
+  color: whitesmoke;
+  display: flex;
+  flex-direction: row;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 64px;
+  }
+}
