@@ -11,6 +11,7 @@ import { MoviesService } from "./state/movies.service";
 })
 export class MoviesComponent implements OnInit {
   moviesList$: Observable<Movie[]> = this.moviesQuery.selectAll();
+  loading$: Observable<boolean> = this.moviesQuery.selectLoading();
   constructor(private moviesServices: MoviesService, private moviesQuery: MoviesQuery) {}
 
   ngOnInit(): void {
