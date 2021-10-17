@@ -1,11 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, ParamMap } from "@angular/router";
+import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { Movie } from "../state/movie.model";
 import { MoviesQuery } from "../state/movies.query";
 import { MoviesService } from "../state/movies.service";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogNewEditMovieComponent } from "../components/dialog-new-edit-movie/dialog-new-edit-movie.component";
+import { DialogDeleteMovieComponent } from "../components/dialog-delete-movie/dialog-delete-movie.component";
 @Component({
   selector: "app-movie-details",
   templateUrl: "./movie-details.component.html",
@@ -20,7 +21,8 @@ export class MovieDetailsComponent implements OnInit {
     private moviesServices: MoviesService,
     private moviesQuery: MoviesQuery,
     private route: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +51,21 @@ export class MovieDetailsComponent implements OnInit {
         this.updating = true;
         this.moviesServices.update(this.movieData.id, result).subscribe(() => {
           this.updating = false;
+        });
+      }
+    });
+  }
+
+  deleteMovie() {
+    const dialogRef = this.dialog.open(DialogDeleteMovieComponent, {
+      width: "30%",
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.updating = true;
+        this.moviesServices.remove(this.movieData.id).subscribe(() => {
+          this.updating = false;
+          this.router.navigate(["/movies"]);
         });
       }
     });

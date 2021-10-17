@@ -45,6 +45,10 @@ export class MoviesService {
   }
 
   remove(id: number) {
-    this.moviesStore.remove(id);
+    return this.httpService.delete("/movies/" + id).pipe(
+      tap(() => {
+        this.moviesStore.remove(id);
+      })
+    );
   }
 }
