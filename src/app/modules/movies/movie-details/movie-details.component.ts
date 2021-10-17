@@ -45,8 +45,8 @@ export class MovieDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.updating = true;
       if (result) {
+        this.updating = true;
         this.moviesServices.update(this.movieData.id, result).subscribe(() => {
           this.updating = false;
         });

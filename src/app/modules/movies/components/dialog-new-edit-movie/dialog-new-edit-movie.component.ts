@@ -11,16 +11,16 @@ import { MoviesService } from "../../state/movies.service";
 })
 export class DialogNewEditMovieComponent {
   movieForm = new FormGroup({
-    title: new FormControl(this.data.title, Validators.required),
-    poster: new FormControl(this.data.poster),
-    year: new FormControl(this.data.year, Validators.required),
-    duration: new FormControl(this.data.duration, Validators.required),
-    imdbRating: new FormControl(this.data.imdbRating, Validators.required),
-    sinopsis: new FormControl(this.data.sinopsis),
-    actors: new FormControl(this.data.actors),
+    title: new FormControl(this.data ? this.data.title : "", Validators.required),
+    poster: new FormControl(this.data ? this.data.poster : ""),
+    year: new FormControl(this.data ? this.data.year : "", Validators.required),
+    duration: new FormControl(this.data ? this.data.duration : "", Validators.required),
+    imdbRating: new FormControl(this.data ? this.data.imdbRating : "", Validators.required),
+    sinopsis: new FormControl(this.data ? this.data.sinopsis : ""),
+    actors: new FormControl(this.data ? this.data.actors : ""),
   });
   genreInput = "";
-  generosForm: string[] = this.data.genre ? [...this.data.genre] : [];
+  generosForm: string[] = this.data && this.data.genre ? [...this.data.genre] : [];
   actors = this.moviesService.actors;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Movie,

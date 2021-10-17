@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Editar película</h1>
+<h1 mat-dialog-title>{{ data ? "Editar" : "Nueva" }} película</h1>
 <mat-dialog-content class="mat-typography" [formGroup]="movieForm">
   <mat-form-field>
     <mat-label>Título</mat-label>

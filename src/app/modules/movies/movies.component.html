@@ -1,5 +1,8 @@
-<div class="center" *ngIf="(loading$ | async) === true">
+<div class="center" [ngClass]="{ above: updating }" *ngIf="(loading$ | async) === true || updating">
   <app-loading></app-loading>
+</div>
+<div class="controls" *ngIf="(loading$ | async) === false">
+  <button mat-raised-button (click)="addMovie()">Nueva película</button>
 </div>
 <div class="movies-list">
   <app-movie-card *ngFor="let movie of moviesList$ | async; trackBy: trackBy" [data]="movie"></app-movie-card>

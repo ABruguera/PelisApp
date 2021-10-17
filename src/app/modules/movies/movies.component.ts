@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
 import { Observable } from "rxjs";
+import { DialogNewEditMovieComponent } from "./components/dialog-new-edit-movie/dialog-new-edit-movie.component";
 import { Movie } from "./state/movie.model";
 import { MoviesQuery } from "./state/movies.query";
 import { MoviesService } from "./state/movies.service";
@@ -12,7 +14,8 @@ import { MoviesService } from "./state/movies.service";
 export class MoviesComponent implements OnInit {
   moviesList$: Observable<Movie[]> = this.moviesQuery.selectAll();
   loading$: Observable<boolean> = this.moviesQuery.selectLoading();
-  constructor(private moviesServices: MoviesService, private moviesQuery: MoviesQuery) {}
+  updating = false;
+  constructor(private moviesServices: MoviesService, private moviesQuery: MoviesQuery, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.moviesServices.getAllMovies().subscribe();
@@ -20,5 +23,20 @@ export class MoviesComponent implements OnInit {
 
   trackBy(_index: any, item: any) {
     return item.id;
+  }
+
+  addMovie() {
+    const dialogRef = this.dialog.open(DialogNewEditMovieComponent, {
+      width: "30%",
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.updating = true;
+        this.moviesServices.add(result).subscribe(() => {
+          this.updating = false;
+        });
+      }
+    });
   }
 }

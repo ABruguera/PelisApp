@@ -28,7 +28,12 @@ export class MoviesService {
   }
 
   add(movie: Movie) {
-    this.moviesStore.add(movie);
+    return this.httpService.post("/movies", movie).pipe(
+      map((res: any) => res as Movie),
+      tap((data: Movie) => {
+        this.moviesStore.add(data);
+      })
+    );
   }
 
   update(id: number, movie: Partial<Movie>) {
