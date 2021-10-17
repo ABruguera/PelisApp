@@ -3,5 +3,28 @@
         "peliculas": "Películas",
         "actores": "Actores",
         "estudios": "Estudios"
+    },
+    "controles": {
+        "cancelar": "Cancelar",
+        "borrar": "Borrar",
+        "guardar": "Guardar",
+        "editar-pelicula": "Editar película",
+        "nueva-pelicula": "Nueva película",
+        "borrar-pelicula": "Borrar película",
+        "confirmar-borrar-pelicula": "¿Está seguro de que sea borrar la película? Esta opción es irreversible.",
+        "debe-rellenar": "Debe rellenar este campo"
+    },
+    "pelicula": {
+        "titulo": "Título",
+        "poster": "Póster",
+        "año": "Año",
+        "url-img": "URL del póster",
+        "generos": "Géneros",
+        "duracion": "Duración",
+        "duracion-mins": "Duración en minutos",
+        "actores": "Actores",
+        "puntuacion": "Puntuación",
+        "sinopsis": "Resumen",
+        "sin-sinopsis": "Sin resumen."
     }
 }
