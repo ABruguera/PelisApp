@@ -32,9 +32,11 @@ export class MoviesService {
   }
 
   update(id: number, movie: Partial<Movie>) {
-    this.httpService.put("/movies/" + id, movie).subscribe((data) => {
-      this.moviesStore.update(id, data);
-    });
+    return this.httpService.put("/movies/" + id, movie).pipe(
+      tap((data) => {
+        this.moviesStore.update(id, data);
+      })
+    );
   }
 
   remove(id: number) {

@@ -14,6 +14,8 @@ import { DialogNewEditMovieComponent } from "../components/dialog-new-edit-movie
 export class MovieDetailsComponent implements OnInit {
   movieData: Movie = {} as Movie;
   actors: string[] = [];
+  loading$: Observable<boolean> = this.moviesQuery.selectLoading();
+  updating = false;
   constructor(
     private moviesServices: MoviesService,
     private moviesQuery: MoviesQuery,
@@ -43,8 +45,11 @@ export class MovieDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      this.updating = true;
       if (result) {
-        this.moviesServices.update(this.movieData.id, result);
+        this.moviesServices.update(this.movieData.id, result).subscribe(() => {
+          this.updating = false;
+        });
       }
     });
   }
