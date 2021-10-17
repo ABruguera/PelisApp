@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        this.currentPage = event.url;
+        this.currentPage = event.urlAfterRedirects;
       }
     });
   }
