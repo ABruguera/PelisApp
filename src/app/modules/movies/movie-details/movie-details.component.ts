@@ -12,6 +12,7 @@ import { MoviesService } from "../state/movies.service";
 })
 export class MovieDetailsComponent implements OnInit {
   movie$!: Observable<Movie | undefined>;
+  actors: string[] = [];
   constructor(private moviesServices: MoviesService, private moviesQuery: MoviesQuery, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -20,6 +21,11 @@ export class MovieDetailsComponent implements OnInit {
       const id = params.get("id");
       if (id) {
         this.movie$ = this.moviesQuery.selectEntity(Number(id));
+        this.movie$.subscribe((data) => {
+          this.actors = this.moviesServices.actors
+            .filter((a) => data?.actors.includes(a.id))
+            .map((item) => item.first_name + " " + item.last_name);
+        });
       }
     });
   }

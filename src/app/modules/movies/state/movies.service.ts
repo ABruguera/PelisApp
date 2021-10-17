@@ -8,6 +8,7 @@ import { MoviesStore } from "./movies.store";
 @Injectable({ providedIn: "root" })
 export class MoviesService {
   loaded = false;
+  actors: any[] = [];
   constructor(private moviesStore: MoviesStore, private httpService: HttpService) {}
 
   getAllMovies() {
@@ -17,9 +18,11 @@ export class MoviesService {
     return this.httpService.get("/movies").pipe(
       map((res: any) => res as Movie[]),
       tap((movies: Movie[]) => {
-        console.log(movies);
-        this.moviesStore.set(movies);
-        this.loaded = true;
+        this.httpService.get("/actors").subscribe((actors: any) => {
+          this.actors = actors;
+          this.moviesStore.set(movies);
+          this.loaded = true;
+        });
       })
     );
   }
