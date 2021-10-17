@@ -1,17 +1,19 @@
-<h1 mat-dialog-title>{{ data ? "Editar" : "Nueva" }} película</h1>
+<h1 mat-dialog-title>{{ (data ? "controles.editar-pelicula" : "controles.nueva-pelicula") | translate }}</h1>
 <mat-dialog-content class="mat-typography" [formGroup]="movieForm">
   <mat-form-field>
-    <mat-label>Título</mat-label>
+    <mat-label>{{ "pelicula.titulo" | translate }}</mat-label>
     <input matInput formControlName="title" />
-    <mat-error *ngIf="form.title.invalid && form.title.hasError('required')"> Debe rellenar este campo </mat-error>
+    <mat-error *ngIf="form.title.invalid && form.title.hasError('required')">
+      {{ "controles.debe-rellenar" | translate }}
+    </mat-error>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Póster</mat-label>
+    <mat-label>{{ "pelicula.poster" | translate }}</mat-label>
     <input matInput formControlName="poster" />
-    <mat-hint>URL de la imagen</mat-hint>
+    <mat-hint>{{ "pelicula.url-img" | translate }}</mat-hint>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Géneros</mat-label>
+    <mat-label>{{ "pelicula.generos" | translate }}</mat-label>
     <input matInput [(ngModel)]="genreInput" [ngModelOptions]="{ standalone: true }" />
     <button matSuffix mat-icon-button aria-label="Añadir género" (click)="addGenre()">
       <mat-icon>add</mat-icon>
@@ -26,20 +28,22 @@
     </mat-chip>
   </mat-chip-list>
   <mat-form-field>
-    <mat-label>Año</mat-label>
+    <mat-label>{{ "pelicula.año" | translate }}</mat-label>
     <input matInput formControlName="year" type="number" />
-    <mat-error *ngIf="form.year.invalid && form.year.hasError('required')"> Debe rellenar este campo </mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Duración</mat-label>
-    <input matInput formControlName="duration" type="number" />
-    <mat-hint>Duración en minutos</mat-hint>
-    <mat-error *ngIf="form.duration.invalid && form.duration.hasError('required')">
-      Debe rellenar este campo
+    <mat-error *ngIf="form.year.invalid && form.year.hasError('required')">
+      {{ "controles.debe-rellenar" | translate }}
     </mat-error>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Actores</mat-label>
+    <mat-label>{{ "pelicula.duracion" | translate }}</mat-label>
+    <input matInput formControlName="duration" type="number" />
+    <mat-hint>{{ "pelicula.duracion-mins" | translate }}</mat-hint>
+    <mat-error *ngIf="form.duration.invalid && form.duration.hasError('required')">
+      {{ "controles.debe-rellenar" | translate }}
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{ "pelicula.actores" | translate }}</mat-label>
     <mat-select formControlName="actors" multiple>
       <mat-option *ngFor="let actor of actors" [value]="actor.id">
         {{ actor.first_name + " " + actor.last_name }}
@@ -47,18 +51,18 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Puntuación</mat-label>
+    <mat-label>{{ "pelicula.puntuacion" | translate }}</mat-label>
     <input matInput formControlName="imdbRating" type="number" />
     <mat-error *ngIf="form.imdbRating.invalid && form.imdbRating.hasError('required')">
-      Debe rellenar este campo
+      {{ "controles.debe-rellenar" | translate }}
     </mat-error>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Sinopsis</mat-label>
+    <mat-label>{{ "pelicula.sinopsis" | translate }}</mat-label>
     <textarea matInput formControlName="sinopsis"></textarea>
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close cdkFocusInitial>Cancelar</button>
-  <button mat-button [disabled]="!movieForm.valid" (click)="saveMovie()">Guardar</button>
+  <button mat-button mat-dialog-close cdkFocusInitial>{{ "controles.cancelar" | translate }}</button>
+  <button mat-button [disabled]="!movieForm.valid" (click)="saveMovie()">{{ "controles.guardar" | translate }}</button>
 </mat-dialog-actions>

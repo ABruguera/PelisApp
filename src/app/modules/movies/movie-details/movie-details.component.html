@@ -5,17 +5,32 @@
   <img [src]="movieData.poster ? movieData.poster : '/assets/img/no-image.png'" />
   <div class="info">
     <div>
-      <p><b>Título:</b> {{ movieData.title }}</p>
-      <p><b>Puntuación:</b> {{ movieData.imdbRating }}</p>
+      <p>
+        <b>{{ "pelicula.titulo" | translate }}:</b> {{ movieData.title }}
+      </p>
+      <p>
+        <b>{{ "pelicula.puntuacion" | translate }}:</b> {{ movieData.imdbRating }}
+      </p>
     </div>
-    <p><b>Géneros:</b> {{ movieData.genre?.join(", ") }}</p>
-    <p><b>Año:</b> {{ movieData.year }}</p>
-    <p><b>Duración:</b> {{ movieData.duration }}</p>
-    <p><b>Actores:</b> {{ actors.join(", ") }}</p>
-    <p><b>Sinopsis:</b> {{ movieData.sinopsis ? movieData.sinopsis : "Sin sinopsis" }}</p>
+    <p>
+      <b>{{ "pelicula.generos" | translate }}:</b> {{ movieData.genre?.join(", ") }}
+    </p>
+    <p>
+      <b>{{ "pelicula.año" | translate }}:</b> {{ movieData.year }}
+    </p>
+    <p>
+      <b>{{ "pelicula.duracion" | translate }}:</b> {{ movieData.duration }}
+    </p>
+    <p>
+      <b>{{ "pelicula.actores" | translate }}:</b> {{ actors.join(", ") }}
+    </p>
+    <p>
+      <b>{{ "pelicula.sinopsis" | translate }}:</b><br />
+      {{ movieData.sinopsis ? movieData.sinopsis : ("pelicula.sin-sinopsis" | translate) }}
+    </p>
   </div>
   <div class="controles">
-    <button mat-button (click)="editMovie()" [disabled]="updating">Editar</button>
-    <button mat-button (click)="deleteMovie()" [disabled]="updating">Borrar</button>
+    <button mat-icon-button (click)="editMovie()" [disabled]="updating"><mat-icon>edit</mat-icon></button>
+    <button mat-icon-button (click)="deleteMovie()" [disabled]="updating"><mat-icon>delete</mat-icon></button>
   </div>
 </div>

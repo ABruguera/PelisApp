@@ -1,8 +1,8 @@
-<h1 mat-dialog-title>Borrar película</h1>
+<h1 mat-dialog-title>{{ "controles.borrar-pelicula" | translate }}</h1>
 <mat-dialog-content class="mat-typography">
-  ¿Está seguro de que sea borrar la película? Esta opción es irreversible.
+  {{ "controles.confirmar-borrar-pelicula" | translate }}
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close cdkFocusInitial>Cancelar</button>
-  <button mat-button [mat-dialog-close]="true">Borrar</button>
+  <button mat-button mat-dialog-close cdkFocusInitial>{{ "controles.cancelar" | translate }}</button>
+  <button mat-button [mat-dialog-close]="true">{{ "controles.borrar" | translate }}</button>
 </mat-dialog-actions>
