@@ -1,12 +1,12 @@
 <mat-toolbar>
   <div class="menu-items">
-    <button mat-button [routerLink]="['/movies']" [ngClass]="{ active: currentPage === '/movies' }">
+    <button mat-button [routerLink]="['/movies']" [ngClass]="{ active: currentPage.startsWith('/movies') }">
       {{ "menu.peliculas" | translate }}
     </button>
-    <button mat-button [routerLink]="['/actors']" [ngClass]="{ active: currentPage === '/actors' }">
+    <button mat-button [routerLink]="['/actors']" [ngClass]="{ active: currentPage.startsWith('/actors') }">
       {{ "menu.actores" | translate }}
     </button>
-    <button mat-button [routerLink]="['/studios']" [ngClass]="{ active: currentPage === '/studios' }">
+    <button mat-button [routerLink]="['/studios']" [ngClass]="{ active: currentPage.startsWith('/studios') }">
       {{ "menu.estudios" | translate }}
     </button>
   </div>
