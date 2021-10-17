@@ -1,20 +1,18 @@
-<div *ngIf="movie$ | async" class="movie">
-  <img [src]="(movie$ | async)?.poster ? (movie$ | async)?.poster : '/assets/img/no-image.png'" />
+<div *ngIf="movieData" class="movie">
+  <img [src]="movieData.poster ? movieData.poster : '/assets/img/no-image.png'" />
   <div class="info">
     <div>
-      <p><b>Título:</b> {{ (movie$ | async)?.title }}</p>
-      <p><b>Puntuación:</b> {{ (movie$ | async)?.imdbRating }}</p>
+      <p><b>Título:</b> {{ movieData.title }}</p>
+      <p><b>Puntuación:</b> {{ movieData.imdbRating }}</p>
     </div>
-    <p><b>Géneros:</b> {{ (movie$ | async)?.genre?.join(", ") }}</p>
-    <p><b>Año:</b> {{ (movie$ | async)?.year }}</p>
-    <p><b>Duración:</b> {{ (movie$ | async)?.duration }}</p>
+    <p><b>Géneros:</b> {{ movieData.genre?.join(", ") }}</p>
+    <p><b>Año:</b> {{ movieData.year }}</p>
+    <p><b>Duración:</b> {{ movieData.duration }}</p>
     <p><b>Actores:</b> {{ actors.join(", ") }}</p>
-    <p>
-      <b>Sinopsis:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-      ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-      nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.
-    </p>
+    <p><b>Sinopsis:</b> {{ movieData.sinopsis ? movieData.sinopsis : "Sin sinopsis" }}</p>
+  </div>
+  <div class="controles">
+    <button mat-button (click)="editMovie()">Editar</button>
+    <button mat-button>Borrar</button>
   </div>
 </div>
