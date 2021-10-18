@@ -9,6 +9,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSelectModule } from "@angular/material/select";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 @NgModule({
   declarations: [],
   imports: [],
@@ -23,6 +24,7 @@ import { MatSelectModule } from "@angular/material/select";
     MatChipsModule,
     MatIconModule,
     MatSelectModule,
+    MatSnackBarModule,
   ],
 })
 export class MatsharedModule {}
