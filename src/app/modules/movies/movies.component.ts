@@ -33,9 +33,14 @@ export class MoviesComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.updating = true;
-        this.moviesServices.add(result).subscribe(() => {
-          this.updating = false;
-        });
+        this.moviesServices.add(result).subscribe(
+          () => {
+            this.updating = false;
+          },
+          () => {
+            this.updating = false;
+          }
+        );
       }
     });
   }

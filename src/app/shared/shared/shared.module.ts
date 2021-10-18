@@ -6,7 +6,7 @@ import { LoadingComponent } from "src/app/components/loading/loading.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 @NgModule({
   declarations: [LoadingComponent],
-  imports: [CommonModule, MatsharedModule],
+  imports: [CommonModule, MatsharedModule, TranslateModule],
   exports: [CommonModule, MatsharedModule, TranslateModule, LoadingComponent, FormsModule, ReactiveFormsModule],
 })
 export class SharedModule {}

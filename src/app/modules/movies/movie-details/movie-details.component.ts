@@ -63,10 +63,15 @@ export class MovieDetailsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.updating = true;
-        this.moviesServices.remove(this.movieData.id).subscribe(() => {
-          this.updating = false;
-          this.router.navigate(["/movies"]);
-        });
+        this.moviesServices.remove(this.movieData.id).subscribe(
+          () => {
+            this.updating = false;
+            this.router.navigate(["/movies"]);
+          },
+          () => {
+            this.updating = false;
+          }
+        );
       }
     });
   }
