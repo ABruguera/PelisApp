@@ -9,6 +9,7 @@ import { MoviesStore } from "./movies.store";
 export class MoviesService {
   loaded = false;
   actors: any[] = [];
+  companies: any[] = [];
   constructor(private moviesStore: MoviesStore, private httpService: HttpService) {}
 
   getAllMovies() {
@@ -18,13 +19,26 @@ export class MoviesService {
     return this.httpService.get("/movies").pipe(
       map((res: any) => res as Movie[]),
       tap((movies: Movie[]) => {
+        let cargados = 0;
         this.httpService.get("/actors").subscribe((actors: any) => {
           this.actors = actors;
-          this.moviesStore.set(movies);
-          this.loaded = true;
+          cargados = this._finishLoad(cargados, movies);
+        });
+        this.httpService.get("/companies").subscribe((companies: any) => {
+          this.companies = companies;
+          cargados = this._finishLoad(cargados, movies);
         });
       })
     );
+  }
+
+  private _finishLoad(cargados: number, movies: Movie[]) {
+    cargados += 1;
+    if (cargados === 2) {
+      this.moviesStore.set(movies);
+      this.loaded = true;
+    }
+    return cargados;
   }
 
   add(movie: Movie) {

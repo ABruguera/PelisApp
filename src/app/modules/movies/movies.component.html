@@ -2,7 +2,19 @@
   <app-loading></app-loading>
 </div>
 <div class="controls" *ngIf="(loading$ | async) === false">
-  <button mat-raised-button (click)="addMovie()">{{ "controles.nueva-pelicula" | translate }}</button>
+  <mat-form-field class="search" appearance="outline">
+    <input
+      matInput
+      type="text"
+      placeholder="{{ 'controles.search-movie' | translate }}"
+      [(ngModel)]="searchFilter"
+      (input)="filterChanged()"
+    />
+    <button matSuffix mat-icon-button aria-label="buscar" disabled>
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+  <button mat-raised-button class="add" (click)="addMovie()">{{ "controles.nueva-pelicula" | translate }}</button>
 </div>
 <div class="movies-list">
   <app-movie-card *ngFor="let movie of moviesList$ | async; trackBy: trackBy" [data]="movie"></app-movie-card>

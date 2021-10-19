@@ -1,17 +1,19 @@
 <div class="center" [ngClass]="{ above: updating }" *ngIf="(loading$ | async) === true || updating">
   <app-loading></app-loading>
 </div>
+<div class="controls" *ngIf="movieData">
+  <button mat-icon-button (click)="editMovie()" [disabled]="updating"><mat-icon>edit</mat-icon></button>
+  <button mat-icon-button (click)="deleteMovie()" [disabled]="updating"><mat-icon>delete</mat-icon></button>
+</div>
 <div *ngIf="movieData" class="movie">
   <img [src]="movieData.poster ? movieData.poster : '/assets/img/no-image.png'" />
   <div class="info">
-    <div>
-      <p>
-        <b>{{ "pelicula.titulo" | translate }}:</b> {{ movieData.title }}
-      </p>
-      <p>
-        <b>{{ "pelicula.puntuacion" | translate }}:</b> {{ movieData.imdbRating }}
-      </p>
-    </div>
+    <p>
+      <b>{{ "pelicula.titulo" | translate }}:</b> {{ movieData.title }}
+    </p>
+    <p>
+      <b>{{ "pelicula.puntuacion" | translate }}:</b> {{ movieData.imdbRating }}
+    </p>
     <p>
       <b>{{ "pelicula.generos" | translate }}:</b> {{ movieData.genre?.join(", ") }}
     </p>
@@ -25,12 +27,11 @@
       <b>{{ "pelicula.actores" | translate }}:</b> {{ actors.join(", ") }}
     </p>
     <p>
+      <b>{{ "pelicula.estudios" | translate }}:</b> {{ companies.join(", ") }}
+    </p>
+    <p>
       <b>{{ "pelicula.sinopsis" | translate }}:</b><br />
       {{ movieData.sinopsis ? movieData.sinopsis : ("pelicula.sin-sinopsis" | translate) }}
     </p>
-  </div>
-  <div class="controles">
-    <button mat-icon-button (click)="editMovie()" [disabled]="updating"><mat-icon>edit</mat-icon></button>
-    <button mat-icon-button (click)="deleteMovie()" [disabled]="updating"><mat-icon>delete</mat-icon></button>
   </div>
 </div>

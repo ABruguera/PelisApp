@@ -15,6 +15,7 @@ import { DialogDeleteMovieComponent } from "../components/dialog-delete-movie/di
 export class MovieDetailsComponent implements OnInit {
   movieData: Movie = {} as Movie;
   actors: string[] = [];
+  companies: string[] = [];
   loading$: Observable<boolean> = this.moviesQuery.selectLoading();
   updating = false;
   constructor(
@@ -34,6 +35,9 @@ export class MovieDetailsComponent implements OnInit {
           this.actors = this.moviesServices.actors
             .filter((a) => data?.actors.includes(a.id))
             .map((item) => item.first_name + " " + item.last_name);
+          this.companies = this.moviesServices.companies
+            .filter((a) => data?.companies.includes(a.id))
+            .map((item) => item.name);
           this.movieData = data as Movie;
         });
       }

@@ -51,6 +51,14 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field>
+    <mat-label>{{ "pelicula.estudios" | translate }}</mat-label>
+    <mat-select formControlName="companies" multiple>
+      <mat-option *ngFor="let company of companies" [value]="company.id">
+        {{ company.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
     <mat-label>{{ "pelicula.puntuacion" | translate }}</mat-label>
     <input matInput formControlName="imdbRating" type="number" />
     <mat-error *ngIf="form.imdbRating.invalid && form.imdbRating.hasError('required')">

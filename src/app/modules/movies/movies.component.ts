@@ -15,6 +15,7 @@ export class MoviesComponent implements OnInit {
   moviesList$: Observable<Movie[]> = this.moviesQuery.selectAll();
   loading$: Observable<boolean> = this.moviesQuery.selectLoading();
   updating = false;
+  searchFilter = "";
   constructor(private moviesServices: MoviesService, private moviesQuery: MoviesQuery, public dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -42,6 +43,12 @@ export class MoviesComponent implements OnInit {
           }
         );
       }
+    });
+  }
+
+  filterChanged() {
+    this.moviesList$ = this.moviesQuery.selectAll({
+      filterBy: [(entity) => entity.title.toLowerCase().includes(this.searchFilter.toLowerCase())],
     });
   }
 }

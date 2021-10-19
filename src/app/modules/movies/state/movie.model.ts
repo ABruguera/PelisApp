@@ -8,6 +8,7 @@ export interface Movie {
   imdbRating: number;
   actors: number[];
   sinopsis: string;
+  companies: number[];
 }
 
 export function createMovie(params: Partial<Movie>) {
