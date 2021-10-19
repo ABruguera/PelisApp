@@ -13,7 +13,8 @@
         "nueva-pelicula": "Nueva película",
         "borrar-pelicula": "Borrar película",
         "confirmar-borrar-pelicula": "¿Está seguro de que sea borrar la película? Esta opción es irreversible.",
-        "debe-rellenar": "Debe rellenar este campo"
+        "debe-rellenar": "Debe rellenar este campo",
+        "search-movie": "Busca aquí tu película..."
     },
     "errores": {
         "error500": "No ha sido posible realizar la operación. Por favor, vuelva a intentarlo más tarde.",

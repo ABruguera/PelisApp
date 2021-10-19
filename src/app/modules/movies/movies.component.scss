@@ -27,4 +27,20 @@
   width: 100%;
   flex-flow: row;
   justify-content: flex-end;
+
+  .search {
+    min-width: 240px;
+    width: 30%;
+    margin-left: auto;
+  }
+
+  ::ng-deep .mat-form-field-outline-start,
+  ::ng-deep .mat-form-field-outline-end {
+    background-color: whitesmoke;
+  }
+
+  .add {
+    margin-left: auto;
+    align-self: center;
+  }
 }
