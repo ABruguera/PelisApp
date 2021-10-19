@@ -10,6 +10,7 @@ import { MatChipsModule } from "@angular/material/chips";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatListModule } from "@angular/material/list";
 @NgModule({
   declarations: [],
   imports: [],
@@ -25,6 +26,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatIconModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatListModule,
   ],
 })
 export class MatsharedModule {}
