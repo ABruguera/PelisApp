@@ -5,8 +5,52 @@
   button + button {
     margin-left: 32px;
   }
+}
 
-  .active {
-    color: red;
+.active {
+  background-color: rgb(65, 60, 60);
+  color: whitesmoke;
+}
+
+.mobile-section {
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .mobile-section,
+  .mobile-menu {
+    display: flex;
+  }
+  .menu-items {
+    display: none;
+  }
+
+  .active:hover {
+    background-color: whitesmoke;
+    color: black;
+  }
+
+  .active:focus {
+    background-color: rgb(65, 60, 60);
+    color: whitesmoke;
+  }
+}
+
+mat-sidenav {
+  width: 200px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  ::ng-deep .mat-list-item-content {
+    justify-content: center;
   }
 }
