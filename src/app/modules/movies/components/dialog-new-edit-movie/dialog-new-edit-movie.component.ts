@@ -18,10 +18,12 @@ export class DialogNewEditMovieComponent {
     imdbRating: new FormControl(this.data ? this.data.imdbRating : "", Validators.required),
     sinopsis: new FormControl(this.data ? this.data.sinopsis : ""),
     actors: new FormControl(this.data ? this.data.actors : ""),
+    companies: new FormControl(this.data ? this.data.companies : ""),
   });
   genreInput = "";
   generosForm: string[] = this.data && this.data.genre ? [...this.data.genre] : [];
   actors = this.moviesService.actors;
+  companies = this.moviesService.companies;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Movie,
     private moviesService: MoviesService,
