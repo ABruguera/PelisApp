@@ -1,0 +1,22 @@
+<div class="center" [ngClass]="{ above: updating }" *ngIf="(loading$ | async) === true || updating">
+  <app-loading></app-loading>
+</div>
+<div class="controls" *ngIf="(loading$ | async) === false">
+  <mat-form-field class="search" appearance="outline">
+    <input
+      matInput
+      type="text"
+      placeholder="{{ 'controles.search-movie' | translate }}"
+      [(ngModel)]="searchFilter"
+      (input)="filterChanged()"
+    />
+    <button matSuffix mat-icon-button aria-label="buscar" disabled>
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+  <button mat-raised-button class="add" (click)="addMovie()">{{ "controles.nueva-pelicula" | translate }}</button>
+  <button mat-icon-button class="add add-mobile" (click)="addMovie()"><mat-icon>add</mat-icon></button>
+</div>
+<div class="movies-list">
+  <app-movie-card *ngFor="let movie of moviesList$ | async; trackBy: trackBy" [data]="movie"></app-movie-card>
+</div>

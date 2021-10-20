@@ -1,0 +1,35 @@
+<mat-toolbar>
+  <button class="mobile-menu" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+
+  <div class="menu-items">
+    <button mat-button [routerLink]="['/movies']" [ngClass]="{ active: currentPage.startsWith('/movies') }">
+      {{ "menu.peliculas" | translate }}
+    </button>
+    <button mat-button [routerLink]="['/actors']" [ngClass]="{ active: currentPage.startsWith('/actors') }">
+      {{ "menu.actores" | translate }}
+    </button>
+    <button mat-button [routerLink]="['/studios']" [ngClass]="{ active: currentPage.startsWith('/studios') }">
+      {{ "menu.estudios" | translate }}
+    </button>
+  </div>
+  <div class="mobile-section">
+    <span *ngIf="currentPage.startsWith('/movies')">{{ "menu.peliculas" | translate }}</span>
+    <span *ngIf="currentPage.startsWith('/actors')">{{ "menu.actores" | translate }}</span>
+    <span *ngIf="currentPage.startsWith('/studios')">{{ "menu.estudios" | translate }}</span>
+  </div>
+</mat-toolbar>
+<mat-sidenav-container class="mobile-menu">
+  <mat-sidenav #snav [mode]="'over'" fixedTopGap="56" [fixedInViewport]="true">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/movies" [ngClass]="{ active: currentPage.startsWith('/movies') }">
+        {{ "menu.peliculas" | translate }}
+      </a>
+      <a mat-list-item routerLink="/actors" [ngClass]="{ active: currentPage.startsWith('/actors') }">
+        {{ "menu.actores" | translate }}
+      </a>
+      <a mat-list-item routerLink="/studios" [ngClass]="{ active: currentPage.startsWith('/studios') }">
+        {{ "menu.estudios" | translate }}
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+</mat-sidenav-container>

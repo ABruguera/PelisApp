@@ -1,0 +1,44 @@
+$card-width: 300px;
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  width: $card-width;
+  margin-left: 14px;
+  margin-right: 14px;
+
+  .title {
+    font-size: 18px;
+    font-weight: 500;
+    color: whitesmoke;
+    width: $card-width;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  img {
+    margin-top: 6px;
+    max-width: $card-width;
+    max-height: 450px;
+  }
+
+  .title,
+  img,
+  .genero {
+    cursor: pointer;
+  }
+
+  .generos {
+    padding: 4px;
+
+    .genero {
+      color: whitesmoke;
+    }
+
+    .genero + .genero {
+      margin-left: 6px;
+    }
+  }
+}

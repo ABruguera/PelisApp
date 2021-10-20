@@ -1,0 +1,60 @@
+.movies-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.center {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.above {
+  position: absolute;
+  background-color: #808080a1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.add-mobile {
+  display: none;
+  background-color: whitesmoke;
+}
+
+.controls {
+  display: flex;
+  width: 100%;
+  flex-flow: row;
+  justify-content: flex-end;
+
+  .search {
+    min-width: 240px;
+    width: 30%;
+    margin-left: auto;
+  }
+
+  ::ng-deep .mat-form-field-outline-start,
+  ::ng-deep .mat-form-field-outline-end {
+    background-color: whitesmoke;
+  }
+
+  .add {
+    margin-left: auto;
+    align-self: center;
+  }
+}
+
+@media only screen and (max-width: 435px) {
+  .add {
+    display: none;
+  }
+  .add-mobile {
+    display: unset;
+  }
+}
