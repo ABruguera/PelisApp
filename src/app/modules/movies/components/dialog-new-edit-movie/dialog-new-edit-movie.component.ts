@@ -13,9 +13,13 @@ export class DialogNewEditMovieComponent {
   movieForm = new FormGroup({
     title: new FormControl(this.data ? this.data.title : "", Validators.required),
     poster: new FormControl(this.data ? this.data.poster : ""),
-    year: new FormControl(this.data ? this.data.year : "", Validators.required),
-    duration: new FormControl(this.data ? this.data.duration : "", Validators.required),
-    imdbRating: new FormControl(this.data ? this.data.imdbRating : "", Validators.required),
+    year: new FormControl(this.data ? this.data.year : "", [Validators.required, Validators.min(1895)]),
+    duration: new FormControl(this.data ? this.data.duration : "", [Validators.required, Validators.min(0)]),
+    imdbRating: new FormControl(this.data ? this.data.imdbRating : "", [
+      Validators.required,
+      Validators.min(0),
+      Validators.max(10),
+    ]),
     sinopsis: new FormControl(this.data ? this.data.sinopsis : ""),
     actors: new FormControl(this.data ? this.data.actors : ""),
     companies: new FormControl(this.data ? this.data.companies : ""),
