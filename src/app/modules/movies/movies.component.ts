@@ -29,6 +29,7 @@ export class MoviesComponent implements OnInit {
   addMovie() {
     const dialogRef = this.dialog.open(DialogNewEditMovieComponent, {
       width: "30%",
+      minWidth: "300px",
     });
 
     dialogRef.afterClosed().subscribe((result) => {

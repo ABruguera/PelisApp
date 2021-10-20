@@ -36,7 +36,7 @@ export class MovieDetailsComponent implements OnInit {
             .filter((a) => data?.actors.includes(a.id))
             .map((item) => item.first_name + " " + item.last_name);
           this.companies = this.moviesServices.companies
-            .filter((a) => data?.companies.includes(a.id))
+            .filter((a) => data?.companies?.includes(a.id))
             .map((item) => item.name);
           this.movieData = data as Movie;
         });
@@ -47,6 +47,7 @@ export class MovieDetailsComponent implements OnInit {
   editMovie() {
     const dialogRef = this.dialog.open(DialogNewEditMovieComponent, {
       width: "30%",
+      minWidth: "300px",
       data: this.movieData,
     });
 

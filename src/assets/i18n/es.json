@@ -14,7 +14,10 @@
         "borrar-pelicula": "Borrar película",
         "confirmar-borrar-pelicula": "¿Está seguro de que sea borrar la película? Esta opción es irreversible.",
         "debe-rellenar": "Debe rellenar este campo",
-        "search-movie": "Busca aquí tu película..."
+        "search-movie": "Busca aquí tu película...",
+        "año-min": "El año debe ser mayor o igual a 1985",
+        "no-negativo": "El valor no puede ser negativo",
+        "nota": "La nota debe ser entre 0 y 10"
     },
     "errores": {
         "error500": "No ha sido posible realizar la operación. Por favor, vuelva a intentarlo más tarde.",

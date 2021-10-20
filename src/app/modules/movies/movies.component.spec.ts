@@ -7,9 +7,11 @@ import { MovieCardComponent } from "./components/movie-card/movie-card.component
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { RouterModule } from "@angular/router";
 import { MatDialogModule } from "@angular/material/dialog";
-import { ApplicationInitStatus } from "@angular/core";
 import { ConfigService } from "src/app/services/config.service";
 import { HttpClientModule } from "@angular/common/http";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { FormsModule } from "@angular/forms";
 
 export class ConfigServiceStub {
   get apiUrl() {
@@ -25,7 +27,16 @@ describe("MoviesComponent", () => {
     await TestBed.configureTestingModule({
       declarations: [MoviesComponent, LoadingComponent, MovieCardComponent],
       providers: [HttpService, { provide: ConfigService, useClass: ConfigServiceStub }],
-      imports: [TranslateModule.forRoot(), MatProgressSpinnerModule, RouterModule, MatDialogModule, HttpClientModule],
+      imports: [
+        TranslateModule.forRoot(),
+        MatProgressSpinnerModule,
+        RouterModule,
+        MatDialogModule,
+        HttpClientModule,
+        MatInputModule,
+        MatIconModule,
+        FormsModule,
+      ],
     }).compileComponents();
   });
 

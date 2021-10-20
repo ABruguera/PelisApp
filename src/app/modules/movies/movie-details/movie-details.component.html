@@ -2,7 +2,9 @@
   <app-loading></app-loading>
 </div>
 <div class="controls" *ngIf="movieData">
-  <button mat-icon-button (click)="editMovie()" [disabled]="updating"><mat-icon>edit</mat-icon></button>
+  <button mat-icon-button (click)="editMovie()" onclick="this.blur()" [disabled]="updating">
+    <mat-icon>edit</mat-icon>
+  </button>
   <button mat-icon-button (click)="deleteMovie()" [disabled]="updating"><mat-icon>delete</mat-icon></button>
 </div>
 <div *ngIf="movieData" class="movie">

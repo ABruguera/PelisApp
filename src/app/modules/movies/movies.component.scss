@@ -22,6 +22,11 @@
   left: 0;
 }
 
+.add-mobile {
+  display: none;
+  background-color: whitesmoke;
+}
+
 .controls {
   display: flex;
   width: 100%;
@@ -42,5 +47,14 @@
   .add {
     margin-left: auto;
     align-self: center;
+  }
+}
+
+@media only screen and (max-width: 435px) {
+  .add {
+    display: none;
+  }
+  .add-mobile {
+    display: unset;
   }
 }
