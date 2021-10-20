@@ -3,6 +3,10 @@ import { HeaderComponent } from "./header.component";
 import { RouterTestingModule } from "@angular/router/testing";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { TranslateModule } from "@ngx-translate/core";
+import { MatIconModule } from "@angular/material/icon";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 describe("HeaderComponent", () => {
   let component: HeaderComponent;
@@ -11,7 +15,15 @@ describe("HeaderComponent", () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      imports: [RouterTestingModule, MatToolbarModule, TranslateModule.forRoot()],
+      imports: [
+        RouterTestingModule,
+        MatToolbarModule,
+        TranslateModule.forRoot(),
+        MatIconModule,
+        MatSidenavModule,
+        MatListModule,
+        BrowserAnimationsModule,
+      ],
     }).compileComponents();
   });
 
